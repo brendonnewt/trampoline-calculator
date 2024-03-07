@@ -23,10 +23,10 @@ function addValue(value) {
 document.addEventListener("keydown", function (event) {
     if (event.key === "+") {
         event.preventDefault();
-        addPlus();
+        addValue("+");
     } else if (event.key == "-") {
         event.preventDefault();
-        addMinus();
+        addValue("-");
     }
 });
 
