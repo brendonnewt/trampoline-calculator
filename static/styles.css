@@ -1,0 +1,110 @@
+body {
+    background-color: antiquewhite;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* Make the body fill the height of the viewport */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input[type="button"] {
+    width: 100%;
+    padding: 20px 40px;
+    background-color: #5f9ea0;
+    color: #e0ffff;
+    font-size: 24px;
+    font-weight: bold;
+    align-items: center;
+    border: none;
+}
+
+button[type=button],
+button[type="submit"] {
+    width: 100%;
+    padding: 20px 40px;
+    background-color: cadetblue;
+    color: lightcyan;
+    font-size: 24px;
+    font-weight: bold;
+    border: none;
+}
+
+input[type="text"] {
+    overflow: auto;
+    /* Add scrollbars if content overflows */
+    padding: 30px;
+    /* Add padding for better appearance */
+    resize: both;
+    background-color: rgb(73, 111, 138);
+    color: lightcyan;
+    font-size: 24px;
+    font-weight: bold;
+    border: none;
+    border-radius: 1px;
+}
+.calculator {
+    position: relative;
+}
+
+.button_container {
+    align-self: center;
+    text-align: center;
+    margin-top: 10px;
+}
+
+#result-field {
+    overflow: auto;
+    /* Add scrollbars if content overflows */
+    padding: 30px;
+    /* Add padding for better appearance */
+    resize: both;
+    background-color: #496f8a;
+    color: lightcyan;
+    font-size: 24px;
+    font-weight: bold;
+    border: none;
+    border-radius: 1px;
+}
+
+#output {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+/* Dropdown Button */
+.dropbtn {
+    background-color: #7dc8ad;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    align-self: right;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    padding: 10.5px;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+.dropbtn:hover {
+    background-color: #598c79;
+}
+.dropdown:hover .dropdown-content {display: block;}

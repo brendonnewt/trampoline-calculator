@@ -1,9 +1,8 @@
 from flask import Flask, redirect, render_template, request, url_for, session
 
-from Skill import Skill
 from Combo import Combo
 
-app = Flask(__name__, template_folder='html-files')
+app = Flask(__name__, template_folder='templates')
 
 app.secret_key = 'ddCalc'
 
