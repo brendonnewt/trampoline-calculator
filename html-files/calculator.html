@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DD Calculator</title>
+    <style>
+        body {
+            background-color: antiquewhite;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            /* Make the body fill the height of the viewport */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        table {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        input[type="button"] {
+            width: 100%;
+            padding: 20px 40px;
+            background-color: #5f9ea0;
+            color: #e0ffff;
+            font-size: 24px;
+            font-weight: bold;
+            align-items: center;
+            border: none;
+        }
+
+        button[type=button],
+        button[type="submit"] {
+            width: 100%;
+            padding: 20px 40px;
+            background-color: cadetblue;
+            color: lightcyan;
+            font-size: 24px;
+            font-weight: bold;
+            border: none;
+        }
+
+        input[type="text"] {
+            overflow: auto;
+            /* Add scrollbars if content overflows */
+            padding: 30px;
+            /* Add padding for better appearance */
+            resize: both;
+            background-color: rgb(73, 111, 138);
+            color: lightcyan;
+            font-size: 24px;
+            font-weight: bold;
+            border: none;
+            border-radius: 1px;
+        }
+
+        .button_container {
+            align-self: center;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        #result-field {
+            overflow: auto;
+            /* Add scrollbars if content overflows */
+            padding: 30px;
+            /* Add padding for better appearance */
+            resize: both;
+            background-color: #496f8a;
+            color: lightcyan;
+            font-size: 24px;
+            font-weight: bold;
+            border: none;
+            border-radius: 1px;
+        }
+
+        #output {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 18px;
+        }
+    </style>
+    <script>
+        function addValue(value) {
+            //document.getElementById("result-field").innerHTML += value;
+            document.getElementById("result-value").value += value;
+        }
+        function addPlus() {
+            //document.getElementById("result-field").innerHTML += " + ";
+            document.getElementById("result-value").value += " + ";
+        }
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "+") {
+                event.preventDefault();
+                addPlus();
+            } else if (event.key == "-") {
+                event.preventDefault();
+                addMinus();
+            }
+        });
+        function addMinus() {
+            //document.getElementById("result-field").innerHTML += " - ";
+            document.getElementById("result-value").value += " - ";
+        }
+        function clearResult() {
+            //document.getElementById("result-field").innerHTML = "";
+            document.getElementById("result-value").value = "";
+        }
+        function setCookie(cname, cvalue, exdays) {
+            const d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            let expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+        function getCookie(cname) {
+            let name = cname + "=";
+            let ca = document.cookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
+        function checkCookie() {
+            let user = getCookie("username");
+            if (user != "") {
+                alert("Welcome again " + user);
+            } else {
+                user = prompt("Please enter your name:", "");
+                if (user != "" && user != null) {
+                    setCookie("username", user, 365);
+                }
+            }
+        } 
+    </script>
+</head>
+
+<body>
+    <div id="calculator">
+        <h1>Trampoline DD Calculator</h1>
+        <form action="/calculate" method="POST">
+
+            <table id="button-container">
+                <tr>
+                    <td colspan="4">
+                        <div id="result-field">
+                            <input type="text" name="result-value" id="result-value" value="">
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><button type=button onclick='addValue("7")'>7</button></td>
+                    <td><button type=button onclick='addValue("8")'>8</button></td>
+                    <td><button type=button onclick='addValue("9")'>9</button></td>
+                    <td><button type=button onclick="clearResult()">C</button></td>
+
+                </tr>
+
+                <tr>
+                    <td><button type=button onclick='addValue("4")'>4</button></td>
+                    <td><button type=button onclick='addValue("5")'>5</button></td>
+                    <td><button type=button onclick='addValue("6")'>6</button></td>
+                    <td><button type=button onclick='addValue("o")'>Tuck</button></td>
+
+                </tr>
+
+                <tr>
+                    <td><button type=button onclick='addValue("1")'>1</button></td>
+                    <td><button type=button onclick='addValue("2")'>2</button></td>
+                    <td><button type=button onclick='addValue("3")'>3</button></td>
+                    <td><button type=button onclick='addValue("<")'>Pike</button></td>
+                </tr>
+
+                <tr>
+                    <td><button type=button onclick='addValue("0")'>0</button></td>
+                    <td><button type=button onclick="addPlus()">+</button></td>
+                    <td><button type=button onclick="addMinus()">-</button></td>
+                    <td><button type=button onclick='addValue("/")'>Straight</button></td>
+                </tr>
+
+                <tr>
+                    <td colspan="4"><button type="submit" style="background-color: #496f8a;">Calculate</button></td>
+                </tr>
+
+            </table>
+            <div id="output">
+                {%if result is defined%}
+                {{"Result: "+result}}
+                {%endif%}
+            </div>
+        </form>
+    </div>
+
+</body>
+
+</html>
