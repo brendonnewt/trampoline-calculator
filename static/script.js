@@ -1,11 +1,25 @@
+/*
+
+* Author: Brendon Newton
+* Project: Trampoline DD Calculator
+* Filename: script.js
+* Last Updated: 3/7/2024
+
+Description: This file contains the javascript functions for calculator.html
+
+*/
+
+/* Adds the value of the button that is pressed to the result string */
 function addValue(value) {
-    //document.getElementById("result-field").innerHTML += value;
+
+    //Formats plus and minus signs
+    if (value == "+") {value = " + "}
+    else if (value == "-") {value = " - "}
+
     document.getElementById("result-value").value += value;
 }
-function addPlus() {
-    //document.getElementById("result-field").innerHTML += " + ";
-    document.getElementById("result-value").value += " + ";
-}
+
+/* Formats + and - when typed */
 document.addEventListener("keydown", function (event) {
     if (event.key === "+") {
         event.preventDefault();
@@ -15,14 +29,14 @@ document.addEventListener("keydown", function (event) {
         addMinus();
     }
 });
-function addMinus() {
-    //document.getElementById("result-field").innerHTML += " - ";
-    document.getElementById("result-value").value += " - ";
-}
+
+/* Clears the result string */
 function clearResult() {
     //document.getElementById("result-field").innerHTML = "";
     document.getElementById("result-value").value = "";
 }
+
+/* Sets a coockie for a combination */
 function setCookie(cname, cvalue, exdays) {
     const d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
@@ -30,6 +44,7 @@ function setCookie(cname, cvalue, exdays) {
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 
+/* Gets a cookie for a combination */
 function getCookie(cname) {
     let name = cname + "=";
     let ca = document.cookie.split(';');
@@ -45,14 +60,12 @@ function getCookie(cname) {
     return "";
 }
 
+/* Checks if a combination has a cookie */
 function checkCookie() {
-    let user = getCookie("username");
-    if (user != "") {
-        alert("Welcome again " + user);
+    let combo = getCookie("name");
+    if (combo != "") {
+        //Modify this to return the result of the combo's sum
     } else {
-        user = prompt("Please enter your name:", "");
-        if (user != "" && user != null) {
-            setCookie("username", user, 365);
-        }
+        //TODO: Display combo name is invalid
     }
 }

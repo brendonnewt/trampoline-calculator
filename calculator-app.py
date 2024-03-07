@@ -1,3 +1,15 @@
+"""
+
+# Author: Brendon Newton
+# Project: Trampoline DD Calculator
+# Filename: calculator-app.py
+# Last Updated: 3/7/2024
+
+Description: This file is a Flask project that creates the website for the
+             Trampoline DD Calculator
+
+"""
+
 from flask import Flask, redirect, render_template, request, url_for, session
 
 from Combo import Combo
@@ -32,11 +44,6 @@ def calculate():
 def result():
     result = session.get('result', 'No result available')
     return render_template('calculator.html', result=result)
-
-
-@app.route('/test')
-def help():
-    return "PLEASEPLEASEPLEASE"
 
 
 @app.errorhandler(Exception)

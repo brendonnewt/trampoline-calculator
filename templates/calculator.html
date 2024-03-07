@@ -1,3 +1,14 @@
+<!--
+
+    Author: Brendon Newton
+    Project: Trampoline DD Calculator
+    Filename: calculator.html
+    Last Updated: 3/7/2024
+
+    Description: This file contains the HTML for the DD Calculator website
+
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,12 +28,6 @@
                 {%if result is defined%}
                 {{"Result: "+result}}
                 {%endif%}
-            </div>
-            <div class="dropdown">
-                <button class="dropbtn">Saved Combinations</button>
-                <div class="dropdown-content">
-                    <option value="addOption">Add Combination</option>
-                </div>
             </div>
 
             <table id="button-container">
@@ -59,8 +64,8 @@
 
                 <tr>
                     <td><button type=button onclick='addValue("0")'>0</button></td>
-                    <td><button type=button onclick="addPlus()">+</button></td>
-                    <td><button type=button onclick="addMinus()">-</button></td>
+                    <td><button type=button onclick='addValue("+")'>+</button></td>
+                    <td><button type=button onclick='addValue("-")'>-</button></td>
                     <td><button type=button onclick='addValue("/")'>Straight</button></td>
                 </tr>
 

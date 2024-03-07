@@ -1,8 +1,9 @@
-
 """
+
 # Author: Brendon Newton
+# Project: Trampoline DD Calculator
 # File: Combo.py
-# Last Updated: 3/5/2023
+# Last Updated: 3/7/2023
 
 Description: This file implements the Combo class
 
