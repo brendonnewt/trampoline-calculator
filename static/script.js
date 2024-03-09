@@ -19,17 +19,6 @@ function addValue(value) {
     document.getElementById("result-value").value += value;
 }
 
-/* Formats + and - when typed */
-document.addEventListener("keydown", function (event) {
-    if (event.key === "+") {
-        event.preventDefault();
-        addValue("+");
-    } else if (event.key == "-") {
-        event.preventDefault();
-        addValue("-");
-    }
-});
-
 /* Clears the result string */
 function clearResult() {
     //document.getElementById("result-field").innerHTML = "";
@@ -69,3 +58,22 @@ function checkCookie() {
         //TODO: Display combo name is invalid
     }
 }
+
+/* Formats + and - when typed */
+document.addEventListener("keydown", function (event) {
+    if (event.key == "+") {
+        event.preventDefault();
+        addValue("+");
+    } else if (event.key == "-") {
+        event.preventDefault();
+        addValue("-");
+    } else if (/[0-9]/.test(event.key)) {
+        event.preventDefault();
+        addValue(event.key);
+    } else if (/[o</]/.test(event.key)) {
+        event.preventDefault();
+        addValue(event.key);
+    } else {
+        event.preventDefault();
+    }
+});

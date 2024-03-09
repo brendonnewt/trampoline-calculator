@@ -23,56 +23,43 @@
 
 <body>
     <div id="calculator">
-        <h1>Trampoline DD Calculator</h1>
+        <h1 style="font-size: x-large;">Trampoline DD Calculator</h1>
         <form action="/calculate" method="POST">
-            <div id="output" style="margin-bottom: 10px; font-size: 27px;">
+
+            <div class="output" style="font-size: large;">
                 {%if result is defined%}
                 {{"Result: "+result}}
                 {%endif%}
             </div>
 
-            <table id="button-container">
-                <tr>
-                    <td colspan="4">
-                        <textarea name="result-value" id="result-value" value="" cols="30" rows="12"></textarea>
-                    </td>
-                </tr>
+            <div id="result">
+                <textarea name="result-value" id="result-value" readonly></textarea>
+            </div>
 
-                <tr>
-                    <td><button type=button onclick='addValue("7")'>7</button></td>
-                    <td><button type=button onclick='addValue("8")'>8</button></td>
-                    <td><button type=button onclick='addValue("9")'>9</button></td>
-                    <td><button type=button onclick="clearResult()">C</button></td>
+            <div class="button-container">
 
-                </tr>
+                    <button type=button onclick='addValue("7")'>7</button>
+                    <button type=button onclick='addValue("8")'>8</button>
+                    <button type=button onclick='addValue("9")'>9</button>
+                    <button type=button onclick="clearResult()">C</button>
+                    <button type=button onclick='addValue("4")'>4</button>
+                    <button type=button onclick='addValue("5")'>5</button>
+                    <button type=button onclick='addValue("6")'>6</button>
+                    <button type=button onclick='addValue("o")'>o</button>
+                    <button type=button onclick='addValue("1")'>1</button>
+                    <button type=button onclick='addValue("2")'>2</button>
+                    <button type=button onclick='addValue("3")'>3</button>
+                    <button type=button onclick='addValue("<")'><</button>
+                    <button type=button onclick='addValue("0")'>0</button>
+                    <button type=button onclick='addValue("+")'>+</button>
+                    <button type=button onclick='addValue("-")'>-</button>
+                    <button type=button onclick='addValue("/")'>/</button>
+                    <button type="submit" style="background-color: #496f8a;">Calculate</button>
 
-                <tr>
-                    <td><button type=button onclick='addValue("4")'>4</button></td>
-                    <td><button type=button onclick='addValue("5")'>5</button></td>
-                    <td><button type=button onclick='addValue("6")'>6</button></td>
-                    <td><button type=button onclick='addValue("o")'>Tuck</button></td>
+            </div>
 
-                </tr>
+            
 
-                <tr>
-                    <td><button type=button onclick='addValue("1")'>1</button></td>
-                    <td><button type=button onclick='addValue("2")'>2</button></td>
-                    <td><button type=button onclick='addValue("3")'>3</button></td>
-                    <td><button type=button onclick='addValue("<")'>Pike</button></td>
-                </tr>
-
-                <tr>
-                    <td><button type=button onclick='addValue("0")'>0</button></td>
-                    <td><button type=button onclick='addValue("+")'>+</button></td>
-                    <td><button type=button onclick='addValue("-")'>-</button></td>
-                    <td><button type=button onclick='addValue("/")'>Straight</button></td>
-                </tr>
-
-                <tr>
-                    <td colspan="4"><button type="submit" style="background-color: #496f8a;">Calculate</button></td>
-                </tr>
-
-            </table>
         </form>
     </div>
 
