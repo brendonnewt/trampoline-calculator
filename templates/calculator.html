@@ -14,7 +14,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=no" name="viewport" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="/static/styles.css">
     <script src="/static/script.js" defer></script>
     <title>DD Calculator</title>
@@ -24,7 +25,7 @@
     <div id="calculator">
         <h1>Trampoline DD Calculator</h1>
         <form action="/calculate" method="POST">
-            <div id="output">
+            <div id="output" style="margin-bottom: 10px; font-size: 27px;">
                 {%if result is defined%}
                 {{"Result: "+result}}
                 {%endif%}
@@ -33,9 +34,7 @@
             <table id="button-container">
                 <tr>
                     <td colspan="4">
-                        <div id="result-field">
-                            <input type="text" name="result-value" id="result-value" value="">
-                        </div>
+                        <textarea name="result-value" id="result-value" value="" cols="30" rows="12"></textarea>
                     </td>
                 </tr>
 

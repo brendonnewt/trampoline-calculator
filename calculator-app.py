@@ -28,10 +28,9 @@ def calculate():
     if request.method == 'POST':
         if request.form.get("result-value", "") == "":
             session['result'] = ""
-            print("there")
         else:
-            print("here")
             combo = Combo()
+            print (request.form.get("result-value", ""))
             total = combo.calculate_input(request.form.get("result-value", ""))
             session['result'] = total
 
@@ -52,4 +51,4 @@ def handle_error(e):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0", port=8000)

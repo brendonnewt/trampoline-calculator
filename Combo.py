@@ -24,6 +24,7 @@ class Combo:
         if combo != None:
             self.combo = combo
 
+
     def parse_input(self, string) -> None:
         string = str.split(string, ",")
         for token in string:
@@ -32,9 +33,8 @@ class Combo:
 
     def calculate_input(self, string) -> str:
         operators = []
+        string = string.strip()
         string = str.split(string, " ")
-
-        print(len(string))
 
         if len(string) == 0:
             return ""
@@ -61,11 +61,11 @@ class Combo:
         # Gets the sum of an equation
         else:
             for operator in operators:
-                if len(self.combo) < 2:
+                if len(self.combo) < 2 or len(operators) < 1:
                     return "Bad input"
                 skill2 = self.combo.pop()
                 skill1 = self.combo.pop()
-                total += self.perform_operation(skill1, skill2, operator)
+                total += self.perform_operation(skill1, skill2, operators.pop())
 
         return str(round(total, 1))
 
