@@ -3,7 +3,7 @@
 * Author: Brendon Newton
 * Project: Trampoline DD Calculator
 * Filename: menu.js
-* Last Updated: 3/9/2024
+* Last Updated: 3/10/2024
 
 Description: This file contains the menu javascript functions for calculator.html
 
@@ -91,6 +91,7 @@ function addCombination() {
     //Shows the name prompt
     document.getElementById('name-prompt').classList.remove('hidden');
     document.getElementById('name-prompt').classList.add('flex');
+    document.getElementById('name-panel').classList.add('flex');
 }
 
 /* Removes a combination from the menu */
@@ -99,6 +100,7 @@ function removeCombination() {
     //Shows the remove prompt
     document.getElementById('remove-prompt').classList.remove('hidden');
     document.getElementById('remove-prompt').classList.add('flex');
+    document.getElementById('remove-panel').classList.add('flex');
 }
 
 /* Removes the cookie for the combination */
@@ -125,6 +127,7 @@ function submitRemove() {
     //Hides the remove prompt
     document.getElementById('remove-prompt').classList.add('hidden');
     document.getElementById('remove-prompt').classList.remove('flex');
+    document.getElementById('remove-panel').classList.remove('flex');
 
     //Refreshes the page
     document.getElementById('calculator-form').submit();
@@ -135,6 +138,7 @@ function cancelRemove() {
     //Hides the remove prompt
     document.getElementById('remove-prompt').classList.add('hidden');
     document.getElementById('remove-prompt').classList.remove('flex');
+    document.getElementById('remove-panel').classList.remove('flex');
 }
 
 /* Submits the name for the combination, goes to submitSkill() */
@@ -159,10 +163,12 @@ function submitName() {
     //Hides the name prompt
     document.getElementById('name-prompt').classList.add('hidden');
     document.getElementById('name-prompt').classList.remove('flex');
+    document.getElementById('name-panel').classList.remove('flex');
 
     //Shows the combo prompt
     document.getElementById('combo-prompt').classList.remove('hidden');
     document.getElementById('combo-prompt').classList.add('flex');
+    document.getElementById('combo-panel').classList.add('flex');
 }
 
 function cancelName() {
@@ -172,6 +178,7 @@ function cancelName() {
     //Hides the name prompt
     document.getElementById('name-prompt').classList.add('hidden');
     document.getElementById('name-prompt').classList.remove('flex');
+    document.getElementById('name-panel').classList.remove('flex');
 }
 
 /* Submits a skill to the combination, goes to submitCombo() */
@@ -198,6 +205,11 @@ function submitSkill() {
 
 /* Submits the combination to the menu, goes to submitAdd() */
 function submitCombo() {
+    //Checks if the combo is empty
+    if (document.getElementById('hidden-combo').value == "") {
+        document.getElementById('combo-head').innerHTML = "Cannot create empty combo";
+        return;
+    }
     //Hides the combo prompt
     document.getElementById('combo-prompt').classList.remove('flex');
     document.getElementById('combo-prompt').classList.add('hidden');
@@ -206,17 +218,19 @@ function submitCombo() {
     var nameDisplay = document.getElementById('name-input');
     document.getElementById('combo-name').value = "Name: " + nameDisplay.value;
     var hiddenCombo = document.getElementById('hidden-combo');
-    document.getElementById('combo-value').value = hiddenCombo.value;
+    document.getElementById('combo-value').value = "Skills: " + hiddenCombo.value;
 
     //Shows the add prompt
     document.getElementById('add-prompt').classList.remove('hidden');
     document.getElementById('add-prompt').classList.add('flex');
+    document.getElementById('add-panel').classList.add('flex');
 }
 
 function cancelAdd() {
     //Hides the add prompt
     document.getElementById('add-prompt').classList.add('hidden');
     document.getElementById('add-prompt').classList.remove('flex');
+    document.getElementById('add-panel').classList.remove('flex');
 }
 
 /* Makes a cookie for the combination */
@@ -238,6 +252,7 @@ function submitAdd() {
     //Hides the add prompt and refreshes the page
     document.getElementById('add-prompt').classList.add('hidden');
     document.getElementById('add-prompt').classList.remove('flex');
+    document.getElementById('add-panel').classList.remove('flex');
     document.getElementById('calculator-form').submit();
 }
 

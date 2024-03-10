@@ -3,7 +3,7 @@
     Author: Brendon Newton
     Project: Trampoline DD Calculator
     Filename: calculator.html
-    Last Updated: 3/9/2024
+    Last Updated: 3/10/2024
 
     Description: This file contains the HTML for the DD Calculator website
 
@@ -47,33 +47,43 @@
                     </div>
                 </div>
 
-                <div id="remove-prompt" class="hidden">
-                    <label id="remove-head">Enter the name of the combination to remove:</label>
-                    <input type="text" id="remove-input" placeholder="Name of Combination">
-                    <button type="button" class="submit" onclick="submitRemove()">Submit</button>
-                    <button type="button" class="cancel" onclick="cancelRemove()">Cancel</button>
+                <div id="remove-prompt" class="hidden prompt">
+                    <label id="remove-head" class="panel-header">Enter the name of the combination to remove:</label>
+                    <div id="remove-panel" class="panel">
+                        <input type="text" id="remove-input" placeholder="Name of Combination">
+                        <button type="button" class="submit" onclick="submitRemove()">Submit</button>
+                        <button type="button" class="cancel" onclick="cancelRemove()">Cancel</button>
+                    </div>
                 </div>
 
-                <div id="name-prompt" class="hidden">
-                    <label id="name-head">Enter a name for your combination:</label>
-                    <input type="text" id="name-input" placeholder="Name of Combination">
-                    <button type="button" class="submit" onclick="submitName()">Submit</button>
-                    <button type="button" class="cancel" onclick="cancelName()">Cancel</button>
+                <div id="name-prompt" class="hidden prompt">
+                    <label id="name-head" class="panel-header">Enter a name for your combination</label>
+                    <div id="name-panel" class="panel">
+                        <input type="text" id="name-input" placeholder="Name of Combination">
+                        <button type="button" class="submit" onclick="submitName()">Submit</button>
+                        <button type="button" class="cancel" onclick="cancelName()">Cancel</button>
+                    </div>
                 </div>
 
-                <div id="combo-prompt" class="hidden">
-                    <label id="combo-head">Add a skill to your combination:</label>
-                    <input type="text" id="combo-input" placeholder="Skill">
-                    <input id="hidden-combo" type="hidden" name="hidden-combo"></input>
-                    <button type="button" class="submit" onclick="submitSkill()">Submit</button>
-                    <button type="button" class="cancel" onclick="submitCombo()">Done</button>
+                <div id="combo-prompt" class="hidden prompt">
+                    <label id="combo-head" class="panel-header">Add a skill to your combination:</label>
+                    <div id="combo-panel" class="panel">
+                        <input type="text" id="combo-input" placeholder="Skill">
+                        <input id="hidden-combo" type="hidden" name="hidden-combo"></input>
+                        <button type="button" class="submit" onclick="submitSkill()">Submit</button>
+                        <button type="button" class="cancel" onclick="submitCombo()">Done</button>
+                    </div>
                 </div>
 
-                <div id="add-prompt" class="hidden">
-                    <output type="text" id="combo-name"></output>
-                    <textarea name="combo-value" id="combo-value" readonly style="resize: none;"></textarea>
-                    <button type="button" class="submit" onclick="submitAdd()">Add Combo</button>
-                    <button type="button" class="cancel" onclick="cancelAdd()">Cancel</button>
+                <div id="add-prompt" class="hidden prompt">
+                    <output type="text" id="combo-name" class="panel-header"></output>
+                    <textarea name="combo-value" id="combo-value" class="panel-header" readonly
+                    style="resize: none; font-size: 1.5em; background-color: #496f8a; border: none;
+                    margin-top: 2%;"></textarea>
+                    <div id="add-panel" class="panel">
+                        <button type="button" class="submit" onclick="submitAdd()">Add Combo</button>
+                        <button type="button" class="cancel" onclick="cancelAdd()">Cancel</button>
+                    </div>
                 </div>
 
             </div>

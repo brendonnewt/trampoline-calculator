@@ -3,7 +3,7 @@
 # Author: Brendon Newton
 # Project: Trampoline DD Calculator
 # Filename: calculator-app.py
-# Last Updated: 3/9/2024
+# Last Updated: 3/10/2024
 
 Description: This file is a Flask project that creates the website for the
              Trampoline DD Calculator
@@ -11,7 +11,6 @@ Description: This file is a Flask project that creates the website for the
 """
 
 from flask import Flask, redirect, render_template, request, url_for, session
-
 from Combo import Combo
 
 app = Flask(__name__, template_folder='templates')
@@ -38,7 +37,7 @@ def calculate():
     return render_template('calculator.html')
 
 
-@app.route('/calculate/w')
+@app.route('/calculate/success')
 def result():
     result = session.get('result', 'No result available')
     return render_template('calculator.html', result=result)

@@ -3,7 +3,7 @@
 * Author: Brendon Newton
 * Project: Trampoline DD Calculator
 * Filename: buttons.css
-* Last Updated: 3/9/2024
+* Last Updated: 3/10/2024
 
 Description: This file contains the button styles for calculator.html
 
@@ -53,10 +53,10 @@ Description: This file contains the button styles for calculator.html
 }
 
 .submit {
-    background-color: #496f8a;
-    color: #e0ffff;
-    font-size: 1.5em;
-    height: 6vh;
+    background-color: #538D55;
+    color: antiquewhite;
+    font-size: 1.25em;
+    height: 6.5vh;
     width: 100%;
     font-weight: bold;
     border: none;
@@ -65,14 +65,14 @@ Description: This file contains the button styles for calculator.html
 }
 
 .submit:hover {
-    background-color: #3A4E6E;
+    background-color: #3A6E3E;
 }
 
 .cancel {
-    background-color: #496f8a;
-    color: lightcyan;
-    font-size: 1.5em;
-    height: 6vh;
+    background-color: #8D5555;
+    color: antiquewhite;
+    font-size: 1.25em;
+    height: 6.5vh;
     width: 100%;
     font-weight: bold;
     border: none;
@@ -80,7 +80,7 @@ Description: This file contains the button styles for calculator.html
 }
 
 .cancel:hover {
-    background-color: #3A4E6E;
+    background-color: #6E3A3A;
 }
 
 .button-container button {

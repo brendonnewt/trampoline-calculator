@@ -3,7 +3,7 @@
 # Author: Brendon Newton
 # Project: Trampoline DD Calculator
 # File: Skill.py
-# Last Updated: 3/7/2023
+# Last Updated: 3/10/2023
 
 Description: This file implements the Skill and Position classes
 
@@ -125,7 +125,7 @@ class Skill:
             if i < len(name):
                 self.half_twists += int(name[i])
             else:
-                print("Bad number of twists")
+                self.valid = False
     
 
     def calc_dd(self) -> None:

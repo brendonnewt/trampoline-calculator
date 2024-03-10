@@ -3,7 +3,7 @@
 * Author: Brendon Newton
 * Project: Trampoline DD Calculator
 * Filename: script.js
-* Last Updated: 3/9/2024
+* Last Updated: 3/10/2024
 
 Description: This file contains the general javascript functions for calculator.html
 
@@ -39,5 +39,7 @@ document.addEventListener("keydown", function (event) {
     } else if (event.key == "-") {
         event.preventDefault();
         addValue("-");
+    } else if (event.key == "Enter") {
+        event.preventDefault();
     }
 });
