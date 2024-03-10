@@ -16,6 +16,11 @@ Description: This file contains the button styles for calculator.html
     border: none;
     text-align: left;
     cursor: pointer;
+    background-color: lightcyan;
+}
+
+#menu button:hover {
+    background-color: rgb(159, 209, 211);
 }
 
 #menu #close-button {
