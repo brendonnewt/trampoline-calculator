@@ -1,0 +1,110 @@
+/*
+
+* Author: Brendon Newton
+* Project: Trampoline DD Calculator
+* Filename: buttons.css
+* Last Updated: 3/9/2024
+
+Description: This file contains the button styles for calculator.html
+
+*/
+
+#menu button {
+    font-size: 1em;
+    width: 100%;
+    padding: 1.5vh;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+}
+
+#menu #close-button {
+    font-style: bold;
+    background-color: darkgray;
+    color: black;
+}
+
+#menu #close-button:hover {
+    background-color: gray;
+    color: black;
+}
+
+#menu #menu-add {
+    background-color: #538D55;
+    color: antiquewhite;
+}
+
+#menu #menu-add:hover {
+    background-color: #3A6E3E;
+}
+
+#menu #menu-remove {
+    background-color: #8D5555;
+    color: antiquewhite;
+}
+
+#menu #menu-remove:hover {
+    background-color: #6E3A3A;
+}
+
+.submit {
+    background-color: #496f8a;
+    color: #e0ffff;
+    font-size: 1.5em;
+    height: 6vh;
+    width: 100%;
+    font-weight: bold;
+    border: none;
+    margin: 0.5%;
+
+}
+
+.submit:hover {
+    background-color: #3A4E6E;
+}
+
+.cancel {
+    background-color: #496f8a;
+    color: lightcyan;
+    font-size: 1.5em;
+    height: 6vh;
+    width: 100%;
+    font-weight: bold;
+    border: none;
+    margin: 0.5%;
+}
+
+.cancel:hover {
+    background-color: #3A4E6E;
+}
+
+.button-container button {
+    flex: 1 0 23%;
+    height: 10vh;
+    text-align: center;
+    background-color: cadetblue;
+    color: lightcyan;
+    font-size: 1.5em;
+    font-weight: bold;
+    border: none;
+}
+
+.button-container button:hover {
+    background-color: darkcyan;
+}
+
+.bottom-container button {
+    text-align: center;
+    background-color: #725546;
+    color: #ffffff;
+    font-size: 1.5em;
+    height: 6vh;
+    width: 100%;
+    font-weight: bold;
+    border: none;
+    margin: 0.5%;
+}
+
+.bottom-container button:hover {
+    background-color: #4D3A2E;
+}

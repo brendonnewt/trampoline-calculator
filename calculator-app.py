@@ -3,7 +3,7 @@
 # Author: Brendon Newton
 # Project: Trampoline DD Calculator
 # Filename: calculator-app.py
-# Last Updated: 3/7/2024
+# Last Updated: 3/9/2024
 
 Description: This file is a Flask project that creates the website for the
              Trampoline DD Calculator
@@ -26,12 +26,11 @@ def index():
 @app.route('/calculate', methods=['POST'])
 def calculate():
     if request.method == 'POST':
-        if request.form.get("result-value", "") == "":
+        if request.form.get("hidden-result", "") == "":
             session['result'] = ""
         else:
             combo = Combo()
-            print (request.form.get("result-value", ""))
-            total = combo.calculate_input(request.form.get("result-value", ""))
+            total = combo.calculate_input(request.form.get("hidden-result", ""))
             session['result'] = total
 
         return redirect(url_for('result'))

@@ -3,14 +3,18 @@
 * Author: Brendon Newton
 * Project: Trampoline DD Calculator
 * Filename: styles.css
-* Last Updated: 3/7/2024
+* Last Updated: 3/9/2024
 
 Description: This file contains the styles for calculator.html
 
 */
 
+html {
+    touch-action: manipulation;
+}
+
 body {
-    background-color: antiquewhite;
+    background-color: #faebd7;
     text-align: center;
     align-items: center;
     height: 100vh;
@@ -22,26 +26,41 @@ body {
 
 .output {
     text-align: center;
-    margin-top: 5px;
-    margin-bottom: 14px;
+    margin-top: 1%;
+    margin-bottom: 1%;
 }
 
-#calculator {
+.calculator {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
+    position: relative;
+}
+
+.upper-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 96.5%;
+    height: 90%;
+    margin: auto;
+    background-color: #496f8a;
 }
 
 #result-value {
     resize: none;
     overflow-y: auto;
     text-overflow: clip;
-    width: 82.5%;
+    width: 70%;
     margin: auto;
-    height: 30vh;
+    height: 10vh;
     background-color: #496f8a;
     color: lightcyan;
     font-size: 1.5em;
+    font-family: Ariel, sans-serif;
     font-weight: bold;
     text-align: center;
     border: none;
@@ -51,29 +70,53 @@ body {
     outline: none;
 }
 
+#menu {
+    flex-direction: column;
+    position: absolute;
+    align-self: center;
+    width: 100%;
+    top: 0;
+    overflow-y: auto;
+    background-color: none;
+}
+
+#combo-prompt {
+    flex-direction: column;
+}
+
+#name-prompt {
+    flex-direction: row;
+    width: auto;
+    height: auto;
+}
+
+.hidden {
+    display: none;
+}
+
+.flex {
+    display: flex;
+}
+
 .button-container {
+    background-color: cadetblue;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0.5%;
+    position: relative;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    width: 96.5%;
 }
 
-.button-container button {
-    flex: 1 0 20%;
-    margin: 3px;
-    height: 8vh;
-    text-align: center;
-    background-color: cadetblue;
-    color: lightcyan;
-    font-size: 1.5em;
-    font-weight: bold;
-}
+.bottom-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 97%;
+    height: 100%;
+    margin: auto;
 
-.button-container button[type="submit"] {
-    text-align: center;
-    background-color: cadetblue;
-    color: lightcyan;
-    font-size: 1.5em;
-    width: 100%;
-    font-weight: bold;
-    border: none;
 }
