@@ -3,7 +3,7 @@
 * Author: Brendon Newton
 * Project: Trampoline DD Calculator
 * Filename: menu.js
-* Last Updated: 3/10/2024
+* Last Updated: 3/11/2024
 
 Description: This file contains the menu javascript functions for calculator.html
 
@@ -43,6 +43,7 @@ function loadCombos() {
 /* Toggles the visibility of the menu */
 function toggleMenu() {
     var menu = document.getElementById('menu');
+    closePrompts();
     //Shows the menu
     if (menu.classList.contains('hidden')) {
         menu.classList.remove('hidden');
@@ -73,6 +74,19 @@ function closeMenu() {
     }
 };
 
+function closePrompts() {
+    //Close all prompts with class prompt and their panels
+    var prompts = document.getElementsByClassName('prompt');
+    for (var i = 0; i < prompts.length; i++) {
+        prompts[i].classList.add('hidden');
+        prompts[i].classList.remove('flex');
+    }
+    var panels = document.getElementsByClassName('panel');
+    for (var i = 0; i < panels.length; i++) {
+        panels[i].classList.remove('flex');
+    }
+}
+
 /* Refreshes the input fields */
 function refreshInfo() {
     //Resets the input fields
@@ -97,23 +111,201 @@ function addCombination() {
 /* Removes a combination from the menu */
 function removeCombination() {
     closeMenu();
-    //Shows the remove prompt
+    if (getCookie('combinations') == "") {
+        //Display remove-failed prompt
+        document.getElementById('no-combinations').classList.remove('hidden');
+        document.getElementById('no-combinations').classList.add('flex');
+        document.getElementById('no-combinations-panel').classList.add('flex');
+        return;
+    }
+
+    var combinations = getCookie('combinations').split(',');
+    var select = document.getElementById('remove-select');
+    for (var i = 0; i < combinations.length; i++) {
+        var option = document.createElement('option');
+        option.value = combinations[i];
+        option.text = combinations[i];
+        select.add(option);
+    }
+
+    document.getElementById('remove-selection').classList.remove('hidden');
+    document.getElementById('remove-selection').classList.add('flex');
+    document.getElementById('remove-panel').classList.add('flex');
+}
+
+/* Edits a combination from the menu */
+function editCombination() {
+    closeMenu();
+    if (getCookie('combinations') == "") {
+        //Display remove-failed prompt
+        document.getElementById('no-combinations').classList.remove('hidden');
+        document.getElementById('no-combinations').classList.add('flex');
+        document.getElementById('no-combinations-panel').classList.add('flex');
+        return;
+    }
+
+    var combinations = getCookie('combinations').split(',');
+    var select = document.getElementById('edit-select');
+    for (var i = 0; i < combinations.length; i++) {
+        var option = document.createElement('option');
+        option.value = combinations[i];
+        option.text = combinations[i];
+        select.add(option);
+    }
+
+    document.getElementById('edit-selection').classList.remove('hidden');
+    document.getElementById('edit-selection').classList.add('flex');
+    document.getElementById('edit-panel').classList.add('flex');
+}
+
+function submitEditSelect() {
+    //Hides the edit selection
+    document.getElementById('edit-selection').classList.add('hidden');
+    document.getElementById('edit-selection').classList.remove('flex');
+    document.getElementById('edit-panel').classList.remove('flex');
+
+    //Set edit-name-input to name of combination being edited
+    var selectedOption = document.getElementById('edit-select').value;
+    document.getElementById('edit-name-input').value = selectedOption;
+
+    //Shows the edit prompt
+    document.getElementById('edit-combo-name').classList.remove('hidden');
+    document.getElementById('edit-combo-name').classList.add('flex');
+    document.getElementById('edit-combo-name-panel').classList.add('flex');
+
+}
+
+function submitEdit() {
+    //Closes the edit-combo name prompt
+    document.getElementById('edit-combo-name').classList.add('hidden');
+    document.getElementById('edit-combo-name').classList.remove('flex');
+    document.getElementById('edit-combo-name-panel').classList.remove('flex');
+
+    //Adds each skill from the combination to the skill-select
+    var combo = getCookie(document.getElementById('edit-select').value);
+    combo = combo.split(',');
+    var select = document.getElementById('skill-select');
+    for (var i = 0; i < combo.length; i++) {
+        var option = document.createElement('option');
+        option.value = combo[i];
+        option.text = combo[i];
+        select.add(option);
+    }
+
+    //Shows the edit-combo prompt
+    document.getElementById('edit-combo').classList.remove('hidden');
+    document.getElementById('edit-combo').classList.add('flex');
+    document.getElementById('edit-combo-panel').classList.add('flex');
+}
+
+function editSkill() {
+    //Hides the edit-combo prompt
+    document.getElementById('edit-combo').classList.add('hidden');
+    document.getElementById('edit-combo').classList.remove('flex');
+    document.getElementById('edit-combo-panel').classList.remove('flex');
+
+    //Sets the value of the skill to the selected skill
+    var selectedOption = document.getElementById('skill-select').value;
+    document.getElementById('edit-skill-input').value = selectedOption;
+
+    //Shows the edit-skill prompt
+    document.getElementById('edit-skill').classList.remove('hidden');
+    document.getElementById('edit-skill').classList.add('flex');
+    document.getElementById('edit-skill-panel').classList.add('flex');
+}
+
+function cancelEditSkill() {
+    //Hides the edit-skill prompt
+    document.getElementById('edit-skill').classList.add('hidden');
+    document.getElementById('edit-skill').classList.remove('flex');
+    document.getElementById('edit-skill-panel').classList.remove('flex');
+
+    //Shows the edit-combo prompt
+    document.getElementById('edit-combo').classList.remove('hidden');
+    document.getElementById('edit-combo').classList.add('flex');
+    document.getElementById('edit-combo-panel').classList.add('flex');
+}
+
+function submitEditSkill() {
+    //Hides the edit-skill prompt
+    document.getElementById('edit-skill').classList.add('hidden');
+    document.getElementById('edit-skill').classList.remove('flex');
+    document.getElementById('edit-skill-panel').classList.remove('flex');
+
+    //Replaces the old skill option with the new skill in skill-select
+    var select = document.getElementById('skill-select');
+    var option = document.createElement('option');
+    option.value = document.getElementById('edit-skill-input').value;
+    option.text = document.getElementById('edit-skill-input').value;
+    //Adds new skill in the spot of the old skill
+    select.add(option, select.selectedIndex);
+    //Removes the old skill
+    select.remove(select.selectedIndex);
+
+    //Resets the input field
+    document.getElementById('edit-skill-input').value = "";
+
+    //Shows the edit-combo prompt
+    document.getElementById('edit-combo').classList.remove('hidden');
+    document.getElementById('edit-combo').classList.add('flex');
+    document.getElementById('edit-combo-panel').classList.add('flex');
+}
+
+/* Gets user selection of combination to be removed */
+function submitRemoveSelect() {
+    //Set output to name of combination being removed
+    var selectedOption = document.getElementById('remove-select').value;
+    document.getElementById('remove-name').innerHTML = selectedOption;
+
+    document.getElementById('remove-selection').classList.add('hidden');
+    document.getElementById('remove-selection').classList.remove('flex');
+    document.getElementById('remove-panel').classList.remove('flex');
+
     document.getElementById('remove-prompt').classList.remove('hidden');
     document.getElementById('remove-prompt').classList.add('flex');
     document.getElementById('remove-panel').classList.add('flex');
 }
 
-/* Removes the cookie for the combination */
-function submitRemove() {
-    //Gets the name to be removed
-    var name = document.getElementById('remove-input').value;
-    var combinations = getCookie('combinations').split(',');
-    var index = combinations.indexOf(name);
+function submitEditCombo() {
+    //Hides the edit-combo prompt
+    document.getElementById('edit-combo').classList.add('hidden');
+    document.getElementById('edit-combo').classList.remove('flex');
+    document.getElementById('edit-combo-panel').classList.remove('flex');
 
-    if (getCookie(name) == "") {
-        document.getElementById('remove-head').innerHTML = "No combination with that name exists";
-        return;
+    //Sets the name and value of the combination
+    var newName = document.getElementById('edit-name-input').value;
+    hiddenCombo = "";
+    
+    var select = document.getElementById('skill-select');
+    for (var i = 0; i < select.length; i++) {
+        if (hiddenCombo == "") {hiddenCombo = select[i].value;}
+        else {hiddenCombo += "," + select[i].value;}
     }
+    
+    //Replace the old combination with the new combination
+    var oldName = document.getElementById('edit-select').value;
+    setCookie(newName, hiddenCombo, 30);
+    if (newName != oldName) {
+        setCookie(oldName, "", 0);
+    }
+
+    //Adds it to combinations list
+    var combinations = getCookie('combinations');
+    
+    combinations = combinations.replace(oldName, newName);
+    setCookie('combinations', combinations, 30);
+
+    //Shows the edit-add prompt
+    document.getElementById('edit-add').classList.remove('hidden');
+    document.getElementById('edit-add').classList.add('flex');
+    document.getElementById('edit-add-panel').classList.add('flex');
+}
+
+/* Removes the cookie for the combination */
+function removeCombinationCookie() {
+    var selectedOption = document.getElementById('remove-select').value;
+    var combinations = getCookie('combinations').split(',');
+    var index = combinations.indexOf(selectedOption);
 
     //Checks if the name is valid and removes it from combinations list
     if (index > -1) {
@@ -122,23 +314,15 @@ function submitRemove() {
 
     //Resets combinations cookie and removes the combination cookie
     setCookie('combinations', combinations, 30);
-    setCookie(name, "", 0);
+    setCookie(selectedOption, "", 0);
 
     //Hides the remove prompt
-    document.getElementById('remove-prompt').classList.add('hidden');
-    document.getElementById('remove-prompt').classList.remove('flex');
+    document.getElementById('remove-selection').classList.add('hidden');
+    document.getElementById('remove-selection').classList.remove('flex');
     document.getElementById('remove-panel').classList.remove('flex');
 
     //Refreshes the page
     document.getElementById('calculator-form').submit();
-}
-
-/* Cancels the remove prompt */
-function cancelRemove() {
-    //Hides the remove prompt
-    document.getElementById('remove-prompt').classList.add('hidden');
-    document.getElementById('remove-prompt').classList.remove('flex');
-    document.getElementById('remove-panel').classList.remove('flex');
 }
 
 /* Submits the name for the combination, goes to submitSkill() */
@@ -169,16 +353,6 @@ function submitName() {
     document.getElementById('combo-prompt').classList.remove('hidden');
     document.getElementById('combo-prompt').classList.add('flex');
     document.getElementById('combo-panel').classList.add('flex');
-}
-
-function cancelName() {
-    //Resets the input field
-    document.getElementById('name-input').value = "";
-
-    //Hides the name prompt
-    document.getElementById('name-prompt').classList.add('hidden');
-    document.getElementById('name-prompt').classList.remove('flex');
-    document.getElementById('name-panel').classList.remove('flex');
 }
 
 /* Submits a skill to the combination, goes to submitCombo() */
@@ -224,13 +398,6 @@ function submitCombo() {
     document.getElementById('add-prompt').classList.remove('hidden');
     document.getElementById('add-prompt').classList.add('flex');
     document.getElementById('add-panel').classList.add('flex');
-}
-
-function cancelAdd() {
-    //Hides the add prompt
-    document.getElementById('add-prompt').classList.add('hidden');
-    document.getElementById('add-prompt').classList.remove('flex');
-    document.getElementById('add-panel').classList.remove('flex');
 }
 
 /* Makes a cookie for the combination */

@@ -3,7 +3,7 @@
     Author: Brendon Newton
     Project: Trampoline DD Calculator
     Filename: calculator.html
-    Last Updated: 3/10/2024
+    Last Updated: 3/11/2024
 
     Description: This file contains the HTML for the DD Calculator website
 
@@ -41,18 +41,72 @@
 
                 <div id="menu" class="hidden">
                     <div id="menu-header">
-                        <button type="button" id="close-button" onclick="closeMenu()">Close</button>
+                        <button type="button" id="close-button" onclick="toggleMenu()">Close</button>
                         <button type="button" id="menu-add" onclick="addCombination()">Add Combination</button>
+                        <button type="button" id="menu-edit" onclick="editCombination()">Edit Combination</button>
                         <button type="button" id="menu-remove" onclick="removeCombination()">Remove Combination</button>
                     </div>
                 </div>
 
-                <div id="remove-prompt" class="hidden prompt">
-                    <label id="remove-head" class="panel-header">Enter the name of the combination to remove:</label>
+                <div id="edit-selection" class="hidden prompt">
+                    <label id="edit-head" class="panel-header">Select a combination to edit:</label>
+                    <div id="edit-panel" class="panel">
+                        <select id="edit-select" name="edit-select" style="width: 100%; height: 100%;"></select>
+                        <button type="button" class="submit" onclick="submitEditSelect()">Submit</button>
+                        <button type="button" class="cancel" onclick="toggleMenu()">Cancel</button>
+                    </div>
+                </div>
+
+                <div id="edit-combo-name" class="hidden prompt">
+                    <label id="edit-combo-name-head" class="panel-header">Name:</label>
+                    <input type="text" id="edit-name-input">
+                    <div id="edit-combo-name-panel" class="panel">
+                        <button type="button" class="submit" onclick="submitEdit()">Submit</button>
+                        <button type="button" class="cancel" onclick="toggleMenu()">Cancel</button>
+                    </div>
+                </div>
+
+                <div id="edit-combo" class="hidden prompt">
+                    <label id="edit-combo-head" class="panel-header">Edit your combination:</label>
+                    <div id="edit-combo-panel" class="panel">
+                        <select id="skill-select" name="skill-select" style="width: 100%; height: 100%;"></select>
+                        <button type="button" class="submit" onclick="editSkill()">Edit</button>
+                    </div>
+                    <button type="button" class="submit" onclick="submitEditCombo()">Done</button>
+                    <button type="button" class="cancel" onclick="toggleMenu()">Cancel</button>
+                </div>
+
+                <div id="edit-skill" class="hidden prompt">
+                    <label id="edit-skill-head" class="panel-header">Edit skill:</label>
+                    <div id="edit-skill-panel" class="panel">
+                        <input type="text" id="edit-skill-input">
+                        <button type="button" class="submit" onclick="submitEditSkill()">Submit</button>
+                        <button type="button" class="cancel" onclick="cancelEditSkill()">Cancel</button>
+                    </div>
+                </div>
+
+                <div id="remove-selection" class="hidden prompt">
+                    <label id="remove-head" class="panel-header">Select a combination to remove:</label>
                     <div id="remove-panel" class="panel">
-                        <input type="text" id="remove-input" placeholder="Name of Combination">
-                        <button type="button" class="submit" onclick="submitRemove()">Submit</button>
-                        <button type="button" class="cancel" onclick="cancelRemove()">Cancel</button>
+                        <select id="remove-select" name="remove-select" style="width: 100%; height: 100%;"></select>
+                        <button type="button" class="submit" onclick="submitRemoveSelect()">Submit</button>
+                        <button type="button" class="cancel" onclick="toggleMenu()">Cancel</button>
+                    </div>
+                </div>
+
+                <div id="remove-prompt" class="hidden prompt">
+                    <label id="remove-head" class="panel-header">Are you sure you want to remove this combination?</label>
+                    <output type="text" id="remove-name" class="panel-header"></output>
+                    <div id="remove-panel" class="panel">
+                        <button type="button" class="submit" onclick="removeCombinationCookie()">Yes</button>
+                        <button type="button" class="cancel" onclick="cancelRemove()">No</button>
+                    </div>
+                </div>
+
+                <div id="no-combinations" class="hidden prompt">
+                    <label id="no-combinations-head" class="panel-header">No combinations to edit/remove</label>
+                    <div id="no-combinations-panel" class="panel">
+                        <button type="button" class="cancel" onclick="toggleMenu()">Close</button>
                     </div>
                 </div>
 
@@ -61,7 +115,7 @@
                     <div id="name-panel" class="panel">
                         <input type="text" id="name-input" placeholder="Name of Combination">
                         <button type="button" class="submit" onclick="submitName()">Submit</button>
-                        <button type="button" class="cancel" onclick="cancelName()">Cancel</button>
+                        <button type="button" class="cancel" onclick="toggleMenu()">Cancel</button>
                     </div>
                 </div>
 
@@ -71,8 +125,9 @@
                         <input type="text" id="combo-input" placeholder="Skill">
                         <input id="hidden-combo" type="hidden" name="hidden-combo"></input>
                         <button type="button" class="submit" onclick="submitSkill()">Submit</button>
-                        <button type="button" class="cancel" onclick="submitCombo()">Done</button>
+                        <button type="button" class="submit" onclick="submitCombo()">Done</button>
                     </div>
+                    <button type="button" class="cancel" onclick="toggleMenu()">Cancel</button>
                 </div>
 
                 <div id="add-prompt" class="hidden prompt">
@@ -82,7 +137,7 @@
                     margin-top: 2%;"></textarea>
                     <div id="add-panel" class="panel">
                         <button type="button" class="submit" onclick="submitAdd()">Add Combo</button>
-                        <button type="button" class="cancel" onclick="cancelAdd()">Cancel</button>
+                        <button type="button" class="cancel" onclick="toggleMenu()">Cancel</button>
                     </div>
                 </div>
 

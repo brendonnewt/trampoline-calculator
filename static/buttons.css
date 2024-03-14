@@ -36,16 +36,25 @@ Description: This file contains the button styles for calculator.html
 
 #menu #menu-add {
     background-color: #538D55;
-    color: antiquewhite;
+    color: whitesmoke;
 }
 
 #menu #menu-add:hover {
     background-color: #3A6E3E;
 }
 
+#menu #menu-edit {
+    background-color: #725546;
+    color: whitesmoke;
+}
+
+#menu #menu-edit:hover {
+    background-color: #4D3A2E;
+}
+
 #menu #menu-remove {
-    background-color: #8D5555;
-    color: antiquewhite;
+    background-color: #8f4343;
+    color: whitesmoke;
 }
 
 #menu #menu-remove:hover {

@@ -3,7 +3,7 @@
 # Author: Brendon Newton
 # Project: Trampoline DD Calculator
 # File: Skill.py
-# Last Updated: 3/10/2023
+# Last Updated: 3/14/2023
 
 Description: This file implements the Skill and Position classes
 
@@ -63,6 +63,12 @@ class Skill:
     def parse_name(self) -> None:
         
         name = self.skill
+
+        # If skill is empty, it is invalid
+        if (self.skill[0] == "0"):
+            self.valid = False
+            return
+        
         self.desired_size = self.get_desired_size(self.skill, start=0, end=1)
 
         # If input isn't in the desired form, adjust
