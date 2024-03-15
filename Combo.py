@@ -73,7 +73,6 @@ class Combo:
         if skill.valid:
             self.combo.append(skill)
         else:
-            print("Skill is not valid")
             self.valid = False
 
 
