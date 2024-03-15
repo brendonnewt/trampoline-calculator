@@ -20,9 +20,8 @@ class Combo:
     valid = True
     has_name = False
 
-    def __init__(self, combo=None) -> None:
-        if combo != None:
-            self.combo = combo
+    def __init__(self) -> None:
+        pass
 
 
     def parse_input(self, string) -> None:
@@ -37,7 +36,7 @@ class Combo:
         string = str.split(string, " ")
 
         if len(string) == 0:
-            return ""
+            return "0.0"
 
         # Adds skills and operators
         for token in string:

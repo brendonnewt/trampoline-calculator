@@ -30,6 +30,10 @@ def calculate():
         else:
             combo = Combo()
             total = combo.calculate_input(request.form.get("hidden-result", ""))
+            
+            for skill in combo.combo:
+                combo.remove_skill(skill)
+
             session['result'] = total
 
         return redirect(url_for('result'))
