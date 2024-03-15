@@ -64,8 +64,8 @@ Description: This file contains the button styles for calculator.html
 .submit {
     background-color: #538D55;
     color: antiquewhite;
-    font-size: 1.25em;
-    height: 6.5vh;
+    font-size: 1.5em;
+    height: 7vh;
     width: 100%;
     font-weight: bold;
     border: none;
@@ -80,8 +80,8 @@ Description: This file contains the button styles for calculator.html
 .cancel {
     background-color: #8D5555;
     color: antiquewhite;
-    font-size: 1.25em;
-    height: 6.5vh;
+    font-size: 1.5em;
+    height: 7vh;
     width: 100%;
     font-weight: bold;
     border: none;
@@ -90,6 +90,26 @@ Description: This file contains the button styles for calculator.html
 
 .cancel:hover {
     background-color: #6E3A3A;
+}
+
+@media (max-width: 768px) {
+    .submit {
+        font-size: 1em;
+        height: 4vh;
+        width: 80%;
+    }
+
+    #name-input {
+        font-size: .7em;
+        height: 4vh;
+        width: 80%;
+    }
+
+    .cancel {
+        font-size: 1em;
+        height: 4vh;
+        width: 80%;
+    }
 }
 
 .button-container button {
