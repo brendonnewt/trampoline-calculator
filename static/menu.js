@@ -9,6 +9,22 @@ Description: This file contains the menu javascript functions for calculator.htm
 
 */
 
+/* Shows the first set of menu buttons */
+function showMoreButtons() {
+    document.getElementById('menu-buttons-1').classList.add('hidden');
+    document.getElementById('menu-buttons-1').classList.remove('flex');
+    document.getElementById('menu-buttons-2').classList.remove('hidden');
+    document.getElementById('menu-buttons-2').classList.add('flex');
+}
+
+/* Shows the second set of menu buttons */
+function showLessButtons() {
+    document.getElementById('menu-buttons-1').classList.remove('hidden');
+    document.getElementById('menu-buttons-1').classList.add('flex');
+    document.getElementById('menu-buttons-2').classList.add('hidden');
+    document.getElementById('menu-buttons-2').classList.remove('flex');
+}
+
 /* Loads all previously saved combinations */
 function loadCombos() {
 
@@ -48,7 +64,8 @@ function toggleMenu() {
     if (menu.classList.contains('hidden')) {
         menu.classList.remove('hidden');
         menu.classList.add('flex');
-        document.getElementById('menu-header').classList.add('flex');
+        document.getElementById('menu-buttons-1').classList.add('flex');
+        document.getElementById('menu-buttons-1').classList.remove('hidden');
         loadCombos();
         refreshInfo();
     //Hides the menu
@@ -63,6 +80,12 @@ function closeMenu() {
     var menu = document.getElementById('menu');
     menu.classList.add('hidden');
     menu.classList.remove('flex');
+
+    //Hides both button sets
+    document.getElementById('menu-buttons-1').classList.add('hidden');
+    document.getElementById('menu-buttons-1').classList.remove('flex');
+    document.getElementById('menu-buttons-2').classList.add('hidden');
+    document.getElementById('menu-buttons-2').classList.remove('flex');
 
     //Gets list of combinations
     var combinations = getCookie('combinations');

@@ -61,6 +61,15 @@ Description: This file contains the button styles for calculator.html
     background-color: #6E3A3A;
 }
 
+#menu #menu-more {
+    background-color: darkcyan;
+    color: whitesmoke;
+}
+
+#menu #menu-more:hover {
+    background-color: #00688B;
+}
+
 .submit {
     background-color: #538D55;
     color: antiquewhite;

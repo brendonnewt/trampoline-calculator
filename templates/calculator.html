@@ -42,11 +42,19 @@
                 <input id="hidden-result" type="hidden" name="hidden-result"></input>
 
                 <div id="menu" class="hidden">
-                    <div id="menu-header">
+                    <div id="menu-buttons-1" class="hidden">
                         <button type="button" id="close-button" onclick="toggleMenu()">Close</button>
                         <button type="button" id="menu-add" onclick="addCombination()">Add</button>
                         <button type="button" id="menu-edit" onclick="editCombination()">Edit</button>
                         <button type="button" id="menu-remove" onclick="removeCombination()">Remove</button>
+                        <button type="button" id="menu-more" onclick="showMoreButtons()">More</button>
+                    </div>
+                    <div id="menu-buttons-2" class="hidden">
+                        <button type="button" id="close-button" onclick="toggleMenu()">Close</button>
+                        <button type="button" id="menu-range" onclick="rangeCombination()">Range</button>
+                        <button type="button" id="menu-skeleton" onclick="skeletonCombination()">Skeleton</button>
+                        <button type="button" id="menu-bskeleton" onclick="bskeletonCombination()">B-Skeleton</button>
+                        <button type="button" id="menu-back" onclick="showLessButtons()">Back</button>
                     </div>
                 </div>
 
