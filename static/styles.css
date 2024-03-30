@@ -86,11 +86,13 @@ body {
     font-size: 1.2em;
     font-weight: bold;
     color: lightcyan;
+    background-color: #496f8a;
 }
 
 .panel {
     padding: 3%;
     flex-direction: row;
+    background-color: #496f8a;
 }
 
 .prompt {

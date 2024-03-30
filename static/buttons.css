@@ -23,50 +23,50 @@ Description: This file contains the button styles for calculator.html
     background-color: rgb(159, 209, 211);
 }
 
-#menu #close-button {
+#menu .grey-menu {
     font-style: bold;
     background-color: darkgray;
     color: black;
 }
 
-#menu #close-button:hover {
+#menu .grey-menu:hover {
     background-color: gray;
     color: black;
 }
 
-#menu #menu-add {
+#menu .green-menu {
     background-color: #538D55;
     color: whitesmoke;
 }
 
-#menu #menu-add:hover {
+#menu .green-menu:hover {
     background-color: #3A6E3E;
 }
 
-#menu #menu-edit {
+#menu .brown-menu {
     background-color: #725546;
     color: whitesmoke;
 }
 
-#menu #menu-edit:hover {
+#menu .brown-menu:hover {
     background-color: #4D3A2E;
 }
 
-#menu #menu-remove {
+#menu .red-menu {
     background-color: #8f4343;
     color: whitesmoke;
 }
 
-#menu #menu-remove:hover {
+#menu .red-menu:hover {
     background-color: #6E3A3A;
 }
 
-#menu #menu-more {
+#menu .blue-menu {
     background-color: darkcyan;
     color: whitesmoke;
 }
 
-#menu #menu-more:hover {
+#menu .blue-menu:hover {
     background-color: #00688B;
 }
 
